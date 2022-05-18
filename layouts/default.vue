@@ -1,6 +1,6 @@
 <template>
 <div class="container">
-    <Menu :menu="menu"/>
+    <Menu :menu="menu"  />
      <a class="toggle" @click="toggleMenu()">Toggle </a>
    
     <nuxt class="overview-overview" @animation:complete="menuTransition"/>
@@ -18,7 +18,6 @@ export default {
 
     data(){
         return{
-
         };
     },
 
@@ -26,10 +25,11 @@ export default {
         toggleMenu(){
             if(!this.$store.state.menuToggle){
             this.$store.commit("toggleMenu", true);
-            //this.resetMenu();
+          
             }
             else{
             this.$store.commit("toggleMenu",false);
+            
             }
         },
 
@@ -39,15 +39,11 @@ export default {
 
         },
 
-
         menuTransition(){
             var menuItem = document.body.querySelector(".menu-item-above");
             var menuSelected = document.body.querySelector('.visibility-hidden');
              var menuItemPosition = menuSelected.getBoundingClientRect();
             console.log(menuSelected);
-
-
-            
             var shadowClone = menuSelected.cloneNode(true);
             shadowClone.setAttribute("class", "shadowClone");
                 shadowClone.classList.remove("menu-item-above");
@@ -80,26 +76,29 @@ export default {
             // console.log(titlePositionY);
             // var gsapVar = {y: titlePositionY};
            //console.log(menuItem);
-            gsap.to(".menu-item-above", {
-                  duration:0.09,
-                  y:-1000,
-                  ease:'ease',
-                  
-                });
 
-                  gsap.to(".menu-item-below", {
-                  duration:0.09,
-                  y:1000,
-                  ease:'ease',
+        //    var tl = gsap.timeline();
+        //     tl.to(".menu-item-above", {
+                
+        //           duration:0.09,
+        //           y:-1000,
+        //           ease:'ease',
                   
-                });
+        //         },'start');
+
+        //           tl.to(".menu-item-below", {
+        //           duration:0.09,
+        //           y:1000,
+        //           ease:'ease',
+                  
+        //         },'start');
 
                 gsap.to(".shadowClone", {
                     duration: 0.9,
                     y: -(menuTranslate),
-                    delay: 0.09,
+                    delay: 0.05,
                     ease:'ease',
-                     onComplete:()=>{this.toggleMenu(); this.removeShadow();}
+                     onComplete:()=>{this.toggleMenu(); this.removeShadow(); this.resetMenu();}
                 });
 
     // var body = document.querySelector(".overview-overview")
@@ -109,29 +108,34 @@ export default {
     //   ease: "ease",
     // })
     
-  
+
             // console.log("menuTransition", menuItem);
         },
 
         resetMenu(){
+              this.$store.commit("toggleAbove", false);
+                this.$store.commit("toggleBelow", false);
+          
+            // console.log('menu');
              var menuSelected = document.body.querySelector('.visibility-hidden');
+
              if(menuSelected){
-            menuSelected.classList.remove('.visibility-hidden');
+            setTimeout(()=> {menuSelected.classList.remove('visibility-hidden')},300);
             console.log(menuSelected);
              }
             
-             gsap.to(".menu-item-above", {
-                  duration:0.09,
-                  y:1000,
-                  ease:'ease',
-                });
+            // tl.reverse(".menu-item-above", {
+            //       duration:0.09,
+            //       y:-1000,
+            //       ease:'ease',
+            //     });
 
-                  gsap.to(".menu-item-below", {
-                  duration:0.09,
-                  y:-1000,
-                  ease:'ease',
+            //       tl.from(".menu-item-below", {
+            //       duration:0.09,
+            //       y:1000,
+            //       ease:'ease',
                   
-                });
+            //     });
         }
   },
 

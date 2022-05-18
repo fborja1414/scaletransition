@@ -1,15 +1,10 @@
 <template>
-  <div class="menu-container"  :class="{'menu-active':menu}"
-  >
+  <div class="menu-container"  :class="{'menu-active':menu}">
     <div class="overlayer-content">
         <div class="logo"> logo   </div>
-      <ul class="menu-item-container" :class="{'container-active':menu}">
-        <nuxt-link class="title-item" to="/title"> <li class="menu-item test-click" ref='type' :class="{'menu-item-above': TBool, 'visibility-hidden': TBool1}" @click="toggleRoute(1)"> <a> Typefaces </a></li></nuxt-link>
-          <nuxt-link class="title-item" to="/title">  <li class="menu-item" ref='editorial' :class="{'menu-item-above': EBool, 'menu-item-below':!EBool, 'visibility-hidden': EBool1}"  @click="toggleRoute(2)"> <a>Editorial </a></li></nuxt-link>
-           <nuxt-link class="title-item" to="/title"> <li class="menu-item" ref='index' :class="{'menu-item-above': IXBool, 'menu-item-below':!IXBool, 'visibility-hidden': IXBool1}"  @click="toggleRoute(3)"> <a>Index </a></li></nuxt-link>
-          <nuxt-link class="title-item" to="/title">  <li class="menu-item" ref='store' :class="{'menu-item-above': SBool, 'menu-item-below':!SBool, 'visibility-hidden': SBool1}"  @click="toggleRoute(4)"> <a>Store </a></li></nuxt-link>
-           <nuxt-link class="title-item" to="/title"> <li class="menu-item menu-item-below" :class="{'visibility-hidden': IFBool}" ref='info' @click="toggleRoute(5)"> <a>Information </a></li></nuxt-link>
-      </ul>
+      <ul  class="menu-item-container" :class="{'container-active':menu}">
+          <MenuItem v-for="(entry,index) in Menu" :entry="entry" :currentPage="overPage" :key="index" @currentPageData="currentPage"/>
+     </ul>
       </div>
   </div>
 </template>
@@ -18,22 +13,19 @@
 export default {
     name: "Menu",
 props:{
-    menu: Boolean
+    menu: Boolean,
 },
 
 data(){
 return {
-    currentPage: Number,
-    listClicked: Boolean,
-    TBool: false,
-    EBool: false,
-    IXBool: false,
-    SBool: false,
-    IFBool:false,
-    TBool1: false,
-    EBool1: false,
-    IXBool1: false,
-    SBool1: false,
+    Menu: [
+       { title: 'Typefaces', id:1 },
+       {title : 'Editorial', id:2},
+       {title:'Index', id:3},
+       {title:'Store',id:4},
+       {title:'Information', id:5},
+    ],
+    overPage: 0,
 };
 },
 computed:{
@@ -43,6 +35,11 @@ computed:{
     //       },
 },
   methods:{
+
+      currentPage(data){
+          console.log(data);
+         this.overPage = data;
+      },
       toggleMenu() {
           const menuBoolean = this.$store.state.menuToggle;
         if(!menuBoolean){
@@ -53,49 +50,6 @@ computed:{
         }
       },
 
-      toggleRoute(index){
-          this.currentPage = index;
-            if(this.currentPage >=1 && this.currentPage <2){
-                this.TBool1 = true;
-                this.TBool = true;
-                this.EBool = false;
-                this.IXBool = false;
-                this.SBool = false;
-                this.IFBool = false;
-               
-            }
-            else if(this.currentPage >=2 && this.currentPage <3 ){
-                   this.EBool1 = true;
-                  this.TBool = true;
-                this.EBool = true;
-                this.IXBool = false;
-                this.SBool = false;
-                this.IFBool = false;
-         }
-            else if(this.currentPage >=3 && this.currentPage <4){
-                   this.IXBool1 = true;
-                  this.TBool = true;
-                this.EBool = true;
-                this.IXBool = true;
-                this.SBool = false;
-                this.IFBool = false;
-            }
-            else if(this.currentPage >=4 && this.currentPage <5){
-                   this.SBool1 = true;
-                 this.TBool = true;
-                this.EBool = true;
-                this.IXBool = true;
-                this.SBool = true;
-                this.IFBool = false;
-            }
-            else if(this.currentPage ==5){
-                    this.TBool = true;
-                this.EBool = true;
-                this.IXBool = true;
-                this.SBool = true;
-                this.IFBool = true;
-            }
-      }
       }
             
 
@@ -105,7 +59,6 @@ computed:{
 </script>
 
 <style>
-
     ul{
         padding:0px;
         margin:0px;
@@ -209,6 +162,14 @@ computed:{
     .visibility-hidden{
       visibility: hidden;
     }
+/* 
+    .menu-item-above{
+        transform: translateY(100vh);
+    }
+
+    .menu-item-below{
+        transform: translateY(-100vh);
+    } */
 
 
 </style>

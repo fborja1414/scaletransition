@@ -35,6 +35,7 @@
 
 
 <script>
+import gsap from "gsap";
 export default {
   name: 'TypographyPage',
  
@@ -67,6 +68,23 @@ watch:{
       return this.$store.state.menuToggle;
     }
   },
+
+
+transition: {
+  appear:true,
+  beforeLeave(el, done){
+        // const editorial =  el.querySelector(".test-click");
+    console.log('beforeLeave', el);
+        //this.$store.commit("toggleList",true);
+           gsap.to(el, {
+                  duration:0.001,
+                  ease:'sine',
+                  onComplete:()=>this.$emit('animation:complete'),
+                });
+               
+  },
+}
+
 
 
 };

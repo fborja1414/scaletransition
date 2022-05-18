@@ -35,9 +35,9 @@
 </transition>
 </template>
 
+
 <script>
-import gsap from "gsap";
-import Menu from '../components/Menu.vue';
+
 export default {
   name: 'IndexPage',
   components:{
@@ -122,6 +122,8 @@ watch:{
 
 </script>
 
+
+
 <style >
   .toggle{
     padding:1rem;
@@ -158,7 +160,7 @@ watch:{
    
   .page-enter-active,
 .page-leave-active {
-  transition: opacity 0.25s;
+  transition: opacity 1s;
 }
 .page-enter,
 .page-leave-to {

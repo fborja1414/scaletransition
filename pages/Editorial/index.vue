@@ -3,7 +3,7 @@
 <div >
   
     <div class="homepage">
-        <a class="title-1"> Index </a>
+        <a class="title-1"> Editorial </a>
         <p>sdkjnskcjdckn dkjnwkjvkvw,ebvefhbvejhbv,sdfvbjvbvbejvbejrvbr </p>
         <p>sdkjnskcjdckn dkjnwkjvkvw,ebvefhbvejhbv,sdfvbjvbvbejvbejrvbr </p>
         <p>sdkjnskcjdckn dkjnwkjvkvw,ebvefhbvejhbv,sdfvbjvbvbejvbejrvbr </p>
@@ -36,8 +36,6 @@
 </template>
 
 <script>
-import gsap from "gsap";
-import Menu from '../components/Menu.vue';
 export default {
   name: 'IndexPage',
   components:{
@@ -158,7 +156,7 @@ watch:{
    
   .page-enter-active,
 .page-leave-active {
-  transition: opacity 0.25s;
+  transition: opacity 1s;
 }
 .page-enter,
 .page-leave-to {
