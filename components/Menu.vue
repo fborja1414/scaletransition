@@ -86,10 +86,11 @@ computed:{
         opacity:0;
         pointer-events: none;
         transition-property: opacity;
-        transition-duration: 300ms;
+        transition-duration: 500ms;
         transition-timing-function: ease;
         transition-delay:0s;
         z-index:1000;
+        transition: cubic-bezier(0.33, 1, 0.68, 1);
     }
     
    .overlayer-content{

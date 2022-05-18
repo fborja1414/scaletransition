@@ -1,6 +1,6 @@
 <template>
 <transition name="page">
-<div >
+<div>
   
     <div class="homepage">
         <a class="title-1"> Store </a>

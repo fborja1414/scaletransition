@@ -53,8 +53,8 @@ export default {
     }
 
   .menu-item{
-      transition-property: transform;
-    transition-duration: 500ms;
+      transition-property: transform,opacity;
+    transition-duration: 500ms 100ms;
     transition-timing-function: ease;
     transition-delay: 0s;
     }
