@@ -38,7 +38,7 @@ export default {
             this.$emit('currentPageData', this.entry.id);
         },
     },
-
+//reinitiate beforeleave transition hook on repeated click of nuxt-link
 
 }
 </script>
@@ -53,8 +53,8 @@ export default {
     }
 
   .menu-item{
-      transition-property: transform,opacity;
-    transition-duration: 500ms 100ms;
+      transition-property: transform;
+    transition-duration: 500ms;
     transition-timing-function: ease;
     transition-delay: 0s;
     }

@@ -51,7 +51,7 @@ export default {
             this.$store.commit("toggleMenu",false);
         },
 
-      
+
 
   },
 

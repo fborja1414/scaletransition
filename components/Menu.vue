@@ -49,7 +49,7 @@ computed:{
             this.$store.commit("toggleMenu",false);
         }
       },
-
+        
       }
             
 
@@ -90,7 +90,6 @@ computed:{
         transition-timing-function: ease;
         transition-delay:0s;
         z-index:1000;
-        transition: cubic-bezier(0.33, 1, 0.68, 1);
     }
     
    .overlayer-content{
@@ -105,6 +104,7 @@ computed:{
     }
 
     .menu-item-container{
+        opacity:0;
            width:100%;
         height:100%;
            transition-property: all;
@@ -135,11 +135,13 @@ computed:{
     }
  
     .container-active{
+        opacity:1;
          transform:scale(1);
-    transition-property: transform;
+    transition-property: transform,opacity;
         transition-duration: 300ms; 
        transition-timing-function: ease;
         transition-delay:0s;
+
     }
 
       .menu-active{

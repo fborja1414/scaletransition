@@ -26,5 +26,6 @@ export const mutations ={
     updateCurrentPage(state, value){
         console.log(value);
         state.pageTitle = value;
-    }
+    },
+
 }

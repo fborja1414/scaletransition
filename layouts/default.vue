@@ -38,7 +38,7 @@ export default {
            setTimeout(()=>{ shadowClone.remove()},700);
 
         },
-
+//store menuSelected.y position in store, watch for window change and restore
         menuTransition(){
             var menuItem = document.body.querySelector(".menu-item-above");
             var menuSelected = document.body.querySelector('.visibility-hidden');
@@ -113,8 +113,8 @@ export default {
         },
 
         resetMenu(){
-              this.$store.commit("toggleAbove", false);
-                this.$store.commit("toggleBelow", false);
+             setTimeout(() => {this.$store.commit("toggleAbove", false)},300);
+               setTimeout(() => {this.$store.commit("toggleBelow", false)},300);
           
             // console.log('menu');
              var menuSelected = document.body.querySelector('.visibility-hidden');
